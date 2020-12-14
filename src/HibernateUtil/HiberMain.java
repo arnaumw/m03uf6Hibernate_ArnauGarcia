@@ -30,7 +30,7 @@ public class HiberMain {
     
     
     private static SessionFactory factory;
-    Jugadores j1 = new Jugadores(5, "Magic Johnson 2", 20.0, true, "LA Lakers", new java.sql.Date(1959 - 8 - 14));
+    //Jugadores j1 = new Jugadores(5, "Magic Johnson 2", 20.0, true, "LA Lakers", new java.sql.Date(1959 - 8 - 14));
     
     public static void main(String[] args) {
         
@@ -110,7 +110,7 @@ public class HiberMain {
         }
     }
     
-    public static void actualizarJugador(Jugadores jugador){
+    public static void actualizarJugador(int Id, String nombre){
         iniciarSession();
         Session s1 = factory.openSession();
         Transaction tx = null;
@@ -118,8 +118,8 @@ public class HiberMain {
         try{
             
             tx = s1.beginTransaction();
-            //Jugadores jugador = (Jugadores) s1.get(Jugadores.class, Id);
-            //jugador.setNombreJugador(nombre);
+            Jugadores jugador = (Jugadores) s1.get(Jugadores.class, Id);
+            jugador.setNombreJugador(nombre);
             s1.update(jugador);
             tx.commit();
             
@@ -154,18 +154,5 @@ public class HiberMain {
             factory.close();
         }
     }
-    
-    
-//    
-//    
-//    private static void mostrarJugadores(Iterator<Jugadores> it) {
-//        while(it.hasNext()) {
-//            
-//            jugador = it.next();
-//            
-//            System.out.println(jugador.getIdJugador() + " ---> " + jugador.getNombreJugador() + " ---> " + jugador.getMediaPuntosJugador()
-//            + " ---> " + jugador.isCampeonJugador() + " ---> " + jugador.getEquiposJugador() + " ---> " + jugador.getNacimientoJugador());
-//        }
-//    }
     
 }
