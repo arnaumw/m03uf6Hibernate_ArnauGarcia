@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 09-dic-2020 21:45:07 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="HibernateUtil.Jugadores" table="jugadores" catalog="jugadores" optimistic-lock="version">
+        <id name="idJugador" type="int">
+            <column name="idJugador" />
+            <generator class="assigned" />
+        </id>
+        <property name="nombreJugador" type="string">
+            <column name="nombreJugador" not-null="true" />
+        </property>
+        <property name="mediaPuntosJugador" type="double">
+            <column name="mediaPuntosJugador" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="campeonJugador" type="boolean">
+            <column name="campeonJugador" not-null="true" />
+        </property>
+        <property name="equiposJugador" type="string">
+            <column name="equiposJugador" length="65535" not-null="true" />
+        </property>
+        <property name="nacimientoJugador" type="date">
+            <column name="nacimientoJugador" length="10" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>
